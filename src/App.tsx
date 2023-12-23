@@ -5,6 +5,7 @@ function App() {
   const [answer, setAnswer] = useState("");
   const [expression, setExpression] = useState("");
   const et = expression.trim();
+  const e = eval;
 
   const isOperator = (symbol: string) => {
     return /[*/+-]/.test(symbol);
@@ -73,9 +74,9 @@ function App() {
     }
     const newExpression = newParts.join(" ");
     if (isOperator(newExpression.charAt(0))) {
-      setAnswer(eval(answer + newExpression) as string);
+      setAnswer(e(answer + newExpression) as string);
     } else {
-      setAnswer(eval(newExpression) as string);
+      setAnswer(e(newExpression) as string);
     }
     setExpression("");
   };
